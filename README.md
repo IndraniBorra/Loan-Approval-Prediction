@@ -10,23 +10,110 @@ This solution offers a dual benefit: it helps financial institutions optimize th
 
 This problem is of great interest to me because I am currently pursuing a Master’s degree in Computer Science at the University of Texas at Dallas. This project aligns with my academic interests because I was challenged with loan approval back in my home country.
 
+## Project Structure
+
+```
+loan-approval-prediction/
+├── data/                    # Data files
+│   ├── loan_data.csv       # Raw dataset
+│   └── df_model.csv        # Processed dataset
+├── notebooks/              # Jupyter notebooks for exploration
+│   ├── EDA1.ipynb         # Exploratory Data Analysis Part 1
+│   ├── EDA2.ipynb         # Exploratory Data Analysis Part 2
+│   ├── DecisionTree.ipynb # Decision Tree model
+│   ├── LogisticRegression.ipynb
+│   ├── RandomForest.ipynb
+│   ├── SVM.ipynb
+│   ├── Kmeans.ipynb       # Clustering analysis
+│   └── BaggingBossting.ipynb
+├── src/                    # Source code
+│   ├── preprocess.py      # Data preprocessing utilities
+│   ├── train_models.py    # Model training script
+│   └── predict.py         # Prediction script
+├── models/                 # Saved trained models
+├── reports/                # Model evaluation results and figures
+├── requirements.txt        # Python dependencies
+├── README.md              # Project documentation
+└── Loan.code-workspace    # VS Code workspace configuration
+```
+
+## Setup and Usage
+
+### Prerequisites
+- Python 3.8+
+- pip
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd loan-approval-prediction
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Running the Full Project
+
+To run the prediction workflow (installs/preprocesses/trains once if needed, then prompts for loan prediction input):
+
+```bash
+python run_project.py
+```
+
+To force retraining of models:
+```bash
+python run_project.py --force-train
+```
+
+To skip dependency check/installation:
+```bash
+python run_project.py --skip-install
+```
+
+### Manual Running (Individual Steps)
+
+### Notebooks
+
+The notebooks are ordered to follow the recommended workflow (EDA → baseline → advanced models):
+
+1. `notebooks/01_EDA1.ipynb` (Data exploration & initial cleaning)
+2. `notebooks/02_EDA2.ipynb` (Advanced analysis & feature insights)
+3. `notebooks/03_LogisticRegression.ipynb` (Baseline model)
+4. `notebooks/04_DecisionTree.ipynb` (Tree-based modeling)
+5. `notebooks/05_RandomForest.ipynb` (Ensemble learning)
+6. `notebooks/06_SVM.ipynb` (Support Vector Machine)
+7. `notebooks/07_BaggingBoosting.ipynb` (Ensemble comparison)
+8. `notebooks/08_Kmeans.ipynb` (Clustering / unsupervised)
+
+Run the notebooks with:
+```bash
+jupyter notebook notebooks/
+```
+
+## Results
+
+Model performance comparison is saved to `reports/model_comparison.csv` after training.
+
 ## Problem Statement
 
 Through different factors like income, credit history, employment type, and debt-to-income ratio, the model predicts whether a loan application is likely to be approved.
 
 ## Classification Models Implemented
 
-The following classification models were used in the project:
+The following classification models are implemented in the `src/train_models.py` pipeline:
+
 1. **Logistic Regression**
 2. **Decision Tree**
 3. **Random Forest**
-4. **XGBoost**
-5. **SVM**
-6. **KNN**
-7. **Naive Bayes**
-8. **AdaBoost**
-9. **Gradient Boosting**
-10. **Neural Network**
+4. **Support Vector Machine (SVM)**
+5. **AdaBoost**
+6. **Gradient Boosting**
+
+> Note: The notebooks demonstrate a broader set of experiments, but the production training script focuses on the most stable and well-performing models.
 
 ## Project Type
 
